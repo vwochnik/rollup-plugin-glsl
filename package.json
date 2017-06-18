@@ -1,0 +1,41 @@
+{
+  "name": "rollup-plugin-glsl",
+  "version": "1.0.0",
+  "description": "Converts GLSL shader source files to modules",
+  "main": "dist/rollup-plugin-glsl.js",
+  "jsnext:main": "dist/rollup-plugin-glsl.mjs",
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "rollup-pluginutils": "^1.5.0",
+    "magic-string": "^0.21.3"
+  },
+  "devDependencies": {
+    "buble": "^0.10.6",
+    "mocha": "^2.5.3",
+    "rollup": "^0.31.0",
+    "rollup-plugin-buble": "^0.10.0"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "pretest": "npm run build",
+    "test": "mocha test/*.js --compilers js:buble/register",
+    "prepublish": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vwochnik/rollup-plugin-glsl.git"
+  },
+  "keywords": [
+    "rollup-plugin",
+    "glsl",
+    "shader"
+  ],
+  "author": "Vincent Wochnik <v.wochnik@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vwochnik/rollup-plugin-glsl/issues"
+  },
+  "homepage": "https://github.com/vwochnik/rollup-plugin-glsl"
+}
