@@ -1,6 +1,6 @@
 # rollup-plugin-glsl [![Build Status](https://travis-ci.org/vwochnik/rollup-plugin-glsl.svg)](https://travis-ci.org/vwochnik/rollup-plugin-glsl)
 
-> Converts GLSL shader source files to modules"
+> Converts GLSL shader source files to modules
 
 ```js
 import fragmentShaderSource from './fragment.glsl';
