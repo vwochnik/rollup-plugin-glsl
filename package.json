@@ -1,6 +1,6 @@
 {
   "name": "rollup-plugin-glsl",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Converts GLSL shader source files to modules",
   "main": "dist/rollup-plugin-glsl.js",
   "jsnext:main": "dist/rollup-plugin-glsl.mjs",
