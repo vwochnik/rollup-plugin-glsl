@@ -1,8 +1,6 @@
 import { createFilter } from 'rollup-pluginutils';
 import MagicString from 'magic-string'
 
-const ext = /\.glsl$/;
-
 function compressShader(source) {
   let needNewline = false;
   return source.replace(/\/\*.*?\*\//g, "").split(/\n+/).reduce((result, line) => {
@@ -35,7 +33,6 @@ export default function glsl(options = {}) {
 		name: 'glsl',
 
 		transform(source, id) {
-			if (!ext.test(id)) return;
 			if (!filter(id)) return;
 
 			const code = generateCode(compressShader(source)),
