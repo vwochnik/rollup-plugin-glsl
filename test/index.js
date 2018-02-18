@@ -2,6 +2,7 @@ var assert = require('assert');
 var { rollup } = require('rollup');
 var glsl = require('../');
 var fs = require('fs')
+var compressShader = glsl.compressShader
 
 process.chdir('test');
 
@@ -24,3 +25,21 @@ describe('rollup-plugin-glsl', () => {
 		});
 	});
 });
+
+describe('compressFunction', () => {
+	it('should work with \\\\\\n', () => {
+		assert.equal(compressShader('uni\\\nform float f;'), 'uniform float f;');
+	});
+	it('should work with \\\\\\n\\r', () => {
+		assert.equal(compressShader('uni\\\n\rform float f;'), 'uniform float f;');
+	});
+	it('should work with line comments', () => {
+		assert.equal(compressShader('uniform float f; // foo'), 'uniform float f;');
+	});
+	it('should work with multiline comments', () => {
+		assert.equal(compressShader('uniform/* c */ float f;'), 'uniform float f;');
+	});
+	it('should work with line comments containing \\\\\\r\\n', () => {
+		assert.equal(compressShader('uniform float f;//\\\r\ngarbage'), 'uniform float f;');
+	});
+})
