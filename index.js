@@ -3,7 +3,7 @@ import MagicString from 'magic-string'
 
 function compressShader(source) {
   let needNewline = false;
-  return source.replace(/\/\*.*?\*\//g, "").split(/\n+/).reduce((result, line) => {
+  return source.replace(/\\(?:\r\n|\n\r|\n|\r)|\/\*.*?\*\/|\/\/(?:\\(?:\r\n|\n\r|\n|\r)|[^\n\r])*/g, "").split(/\n+/).reduce((result, line) => {
     line = line.trim().replace(/\s{2,}|\t/, " ");
     if (line[0] === '#') {
       if (needNewline) {
@@ -14,7 +14,6 @@ function compressShader(source) {
       needNewline = false
     } else {
       result.push(line
-        .replace(/\/\/.*/, "")
         .replace(/\s*({|}|=|\*|,|\+|\/|>|<|&|\||\[|\]|\(|\)|\-|!|;)\s*/g, "$1"))
       needNewline = true;
     }
@@ -46,3 +45,4 @@ export default function glsl(options = {}) {
 		}
 	};
 }
+glsl.compressShader = compressShader
