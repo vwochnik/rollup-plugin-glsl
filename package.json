@@ -8,7 +8,7 @@
     "dist"
   ],
   "dependencies": {
-    "rollup-pluginutils": "^1.5.0",
+    "rollup-pluginutils": "^2.0.1",
     "magic-string": "^0.21.3"
   },
   "devDependencies": {
