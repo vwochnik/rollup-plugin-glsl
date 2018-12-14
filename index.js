@@ -34,7 +34,7 @@ export default function glsl(options = {}) {
 		transform(source, id) {
 			if (!filter(id)) return;
 
-			const code = generateCode(compressShader(source)),
+			const code = generateCode(options.compress !== false ? compressShader(source) : source),
 			      magicString = new MagicString(code);
 
 			let result = { code: magicString.toString() };
