@@ -13,7 +13,7 @@ function compressShader(source) {
       result.push(line, "\n");
       needNewline = false
     } else {
-      // Add space after "else" at end of prior line (unless this line starts with bracket)
+      // Add space after "else" at end of prior line (unless this line starts with curly brace)
       if (!line.startsWith('{')
         && result.length 
         && result[result.length - 1].endsWith('else') 
